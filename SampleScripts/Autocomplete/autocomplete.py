@@ -54,6 +54,12 @@ def test_autocomplete_address_response_status(lightbox_api_key: str) -> None:
     address_search_data = autocomplete_address(lightbox_api_key, address, country_code)
     assert address_search_data.status_code == 400, f"Expected status code 400, but got {address_search_data.status_code}"
 
+    # Test case for unsuccessful request (HTTP status code 401)
+    address = '5201 California A'
+    country_code = 'US'
+    address_search_data = autocomplete_address(lightbox_api_key+"A", address, country_code) # Invalid API Key
+    assert address_search_data.status_code == 401, f"Expected status code 401, but got {address_search_data.status_code}"
+
 
 
 # ----------------------------
