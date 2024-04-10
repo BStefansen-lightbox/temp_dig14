@@ -77,4 +77,4 @@ print(json.dumps(address_search_data.json(), indent=4))
 # ----------------------------
 # API Testing
 # ----------------------------
-test_status = test_autocomplete_address_response_status(lightbox_api_key)
+test_autocomplete_address_response_status(lightbox_api_key)

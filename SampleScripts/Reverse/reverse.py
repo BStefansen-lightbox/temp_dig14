@@ -50,30 +50,66 @@ def reverse_address_search(
     return response
 
 
-# def test_reverse_address_search_status(lightbox_api_key: str) -> None:
-#     # Test case for successful request (HTTP status code 200)
-#     address = '5201 California A'
-#     country_code = 'US'
-#     address_search_data = autocomplete_address(lightbox_api_key, address, country_code)
-#     assert address_search_data.status_code == 200, f"Expected status code 200, but got {address_search_data.status_code}"
+def test_reverse_address_search_status(lightbox_api_key: str) -> None:
+    # Test case for successful request (HTTP status code 200)
+    wkt = 'POINT(-117.852723 33.63799)'
+    bufferDistance = 100
+    bufferUnit = 'm'
+    limit = 5
 
-#     # Test case for unsuccessful request (HTTP status code 400)
-#     address = '5201 California A'
-#     country_code = 'U' # Invalid country_code
-#     address_search_data = autocomplete_address(lightbox_api_key, address, country_code)
-#     assert address_search_data.status_code == 400, f"Expected status code 400, but got {address_search_data.status_code}"
+    address_search_data = reverse_address_search(
+        lightbox_api_key, 
+        wkt, 
+        bufferDistance,
+        bufferUnit,
+        limit
+    )
+    assert address_search_data.status_code == 200, f"Expected status code 200, but got {address_search_data.status_code}"
 
-#     # Test case for unsuccessful request (HTTP status code 400)
-#     address = '?' # Invalid address
-#     country_code = 'US'
-#     address_search_data = autocomplete_address(lightbox_api_key, address, country_code)
-#     assert address_search_data.status_code == 400, f"Expected status code 400, but got {address_search_data.status_code}"
+    # # Test case for unsuccessful request (HTTP status code 400)
+    # wkt = 'POINT(-117.852723 33.63799)'
+    # bufferDistance = 100
+    # bufferUnit = 'm'
+    # limit = 5
 
-#     # Test case for unsuccessful request (HTTP status code 401)
-#     address = '5201 California A'
-#     country_code = 'US'
-#     address_search_data = autocomplete_address(lightbox_api_key+"A", address, country_code) # Invalid API Key
-#     assert address_search_data.status_code == 401, f"Expected status code 401, but got {address_search_data.status_code}"
+    # address_search_data = reverse_address_search(
+    #     lightbox_api_key, 
+    #     wkt, 
+    #     bufferDistance,
+    #     bufferUnit,
+    #     limit
+    # )
+    # assert address_search_data.status_code == 400, f"Expected status code 400, but got {address_search_data.status_code}"
+
+    # # Test case for unsuccessful request (HTTP status code 400)
+    # wkt = 'POINT(-117.852723 33.63799)'
+    # bufferDistance = 100
+    # bufferUnit = 'm'
+    # limit = 5
+
+    # address_search_data = reverse_address_search(
+    #     lightbox_api_key, 
+    #     wkt, 
+    #     bufferDistance,
+    #     bufferUnit,
+    #     limit
+    # )
+    # assert address_search_data.status_code == 400, f"Expected status code 400, but got {address_search_data.status_code}"
+
+    # # Test case for unsuccessful request (HTTP status code 401)
+    # wkt = 'POINT(-117.852723 33.63799)'
+    # bufferDistance = 100
+    # bufferUnit = 'm'
+    # limit = 5
+
+    # address_search_data = reverse_address_search(
+    #     lightbox_api_key, 
+    #     wkt, 
+    #     bufferDistance,
+    #     bufferUnit,
+    #     limit
+    # )
+    # assert address_search_data.status_code == 401, f"Expected status code 401, but got {address_search_data.status_code}"
 
 
 
@@ -100,4 +136,4 @@ print(json.dumps(address_search_data.json(), indent=4))
 # ----------------------------
 # API Testing
 # ----------------------------
-# test_status = test_reverse_address_search_status(lightbox_api_key)
+test_reverse_address_search_status(lightbox_api_key)
