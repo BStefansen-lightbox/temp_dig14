@@ -66,50 +66,50 @@ def test_reverse_address_search_status(lightbox_api_key: str) -> None:
     )
     assert address_search_data.status_code == 200, f"Expected status code 200, but got {address_search_data.status_code}"
 
-    # # Test case for unsuccessful request (HTTP status code 400)
-    # wkt = 'POINT(-117.852723 33.63799)'
-    # bufferDistance = 100
-    # bufferUnit = 'm'
-    # limit = 5
+    # Test case for unsuccessful request (HTTP status code 400)
+    wkt = 'POINT(0)' # Invalid parameter
+    bufferDistance = 100
+    bufferUnit = 'm'
+    limit = 5
 
-    # address_search_data = reverse_address_search(
-    #     lightbox_api_key, 
-    #     wkt, 
-    #     bufferDistance,
-    #     bufferUnit,
-    #     limit
-    # )
-    # assert address_search_data.status_code == 400, f"Expected status code 400, but got {address_search_data.status_code}"
+    address_search_data = reverse_address_search(
+        lightbox_api_key, 
+        wkt, 
+        bufferDistance,
+        bufferUnit,
+        limit
+    )
+    assert address_search_data.status_code == 400, f"Expected status code 400, but got {address_search_data.status_code}"
 
-    # # Test case for unsuccessful request (HTTP status code 400)
-    # wkt = 'POINT(-117.852723 33.63799)'
-    # bufferDistance = 100
-    # bufferUnit = 'm'
-    # limit = 5
+    # Test case for unsuccessful request (HTTP status code 400)
+    wkt = 'POINT(-117.852723 33.63799)'
+    bufferDistance = -1 # Invalid parameter
+    bufferUnit = 'm'
+    limit = 5
 
-    # address_search_data = reverse_address_search(
-    #     lightbox_api_key, 
-    #     wkt, 
-    #     bufferDistance,
-    #     bufferUnit,
-    #     limit
-    # )
-    # assert address_search_data.status_code == 400, f"Expected status code 400, but got {address_search_data.status_code}"
+    address_search_data = reverse_address_search(
+        lightbox_api_key, 
+        wkt, 
+        bufferDistance,
+        bufferUnit,
+        limit
+    )
+    assert address_search_data.status_code == 400, f"Expected status code 400, but got {address_search_data.status_code}"
 
-    # # Test case for unsuccessful request (HTTP status code 401)
-    # wkt = 'POINT(-117.852723 33.63799)'
-    # bufferDistance = 100
-    # bufferUnit = 'm'
-    # limit = 5
+    # Test case for unsuccessful request (HTTP status code 401)
+    wkt = 'POINT(-117.852723 33.63799)'
+    bufferDistance = 100
+    bufferUnit = 'm'
+    limit = 5
 
-    # address_search_data = reverse_address_search(
-    #     lightbox_api_key, 
-    #     wkt, 
-    #     bufferDistance,
-    #     bufferUnit,
-    #     limit
-    # )
-    # assert address_search_data.status_code == 401, f"Expected status code 401, but got {address_search_data.status_code}"
+    address_search_data = reverse_address_search(
+        lightbox_api_key+"foobar", 
+        wkt, 
+        bufferDistance,
+        bufferUnit,
+        limit
+    )
+    assert address_search_data.status_code == 401, f"Expected status code 401, but got {address_search_data.status_code}"
 
 
 
