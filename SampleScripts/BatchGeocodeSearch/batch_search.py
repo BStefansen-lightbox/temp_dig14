@@ -54,7 +54,7 @@ def read_addresses_from_csv(file_path: str) -> List[str]:
     return formatted_addresses.tolist()
 
 # Function to batch process addresses for geocoding.
-def batch_geocode_addresses(api_key: str, addresses: List[str], batch_size: int = 1000) -> pd.DataFrame:
+def batch_geocode_addresses(api_key: str, addresses: List[str], batch_size: int = 200) -> pd.DataFrame:
     """
     Batch processes a list of addresses for geocoding.
 
@@ -66,45 +66,48 @@ def batch_geocode_addresses(api_key: str, addresses: List[str], batch_size: int 
     Returns:
         pd.DataFrame: DataFrame containing original addresses and expanded geocoded data.
     """
-    # Splitting the address list into batches
     batched_addresses = [addresses[i:i + batch_size] for i in range(0, len(addresses), batch_size)]
     all_results = []
 
-    # Processing each batch
     for batch in batched_addresses:
         for address in batch:
             result = geocode_address(api_key, address)
-            # Handling successful geocode responses
             if result.status_code == 200:
                 data = result.json()
+                # Extracting data from the first match
                 if data['addresses']:
                     first_match = data['addresses'][0]
                     latitude = first_match['location']['representativePoint']['latitude']
                     longitude = first_match['location']['representativePoint']['longitude']
                     confidence_score = first_match['$metadata']['geocode']['confidence']['score']
+                    precision_code = first_match['$metadata']['geocode']['precisionCode']  # Extracting precision code
                     all_results.append({
                         "address": address, 
                         "latitude": latitude, 
                         "longitude": longitude, 
-                        "confidence_score": confidence_score
+                        "confidence_score": confidence_score,
+                        "precision_code": precision_code  # Adding precision code to the DataFrame
                     })
                 else:
                     all_results.append({
                         "address": address, 
                         "latitude": "No match", 
                         "longitude": "No match", 
-                        "confidence_score": "No match"
+                        "confidence_score": "No match",
+                        "precision_code": "No match"
                     })
-            # Handling failed geocode attempts
             else:
                 all_results.append({
                     "address": address, 
                     "latitude": "Failed",
                     "longitude": f"Status Code: {result.status_code}",
-                    "confidence_score": "Failed"
+                    "confidence_score": "Failed",
+                    "precision_code": "Failed"
                 })
+                print(f"Failed to geocode address '{address}', Status Code: {result.status_code}")
 
     return pd.DataFrame(all_results)
+
 
 # Testing function for verifying the response status of the geocode_address function
 def test_geocode_address_response_status(lightbox_api_key: str) -> None:
