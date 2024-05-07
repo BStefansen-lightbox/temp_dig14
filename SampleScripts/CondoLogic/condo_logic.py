@@ -177,7 +177,7 @@ def test_get_assessment_data_from_lbx_parcel_id(lightbox_api_key):
 # ----------------------------
 
 # Assign your LightBox API key
-lightbox_api_key = "ATFY7foMHsxT2wsgBD5Ovmwy6YvPWtDh"
+lightbox_api_key = ""
 
 # Specify the address to geocode
 address = "25482 Buckwood Land Forest, Ca, 92630"
