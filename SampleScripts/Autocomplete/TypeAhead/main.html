@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <h1>Address Autocomplete</h1>
+    <div class="container">
+        <div id="text-box">
+            <p>The purpose of this webpage is to demonstrate a typeahead use case for the Lightbox Geocoder Autocomplete API.</p>
+            <p>Please enter your Lightbox Developer Portal API key. This will be used to pull data from the autocomplete API key.</p>
+            <input list="dropdown" type="text" id="input-key" placeholder="Enter API key here">
+            <button id="apiButton">Submit</button>
+            <p>While entering a partial address, the LBX geocoder will return a set of address candidates based on autocompletion of the partial string 'text', and display those results as a select dropdown.</p>
+            <input list="dropdown" type="text" id="input-text" placeholder="Enter address here">
+            <datalist id="dropdown">
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

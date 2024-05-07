@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#text-box {
+    position: relative;
+}
+
+#input-text {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+#input-key {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+#dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-top: none;
+    background-color: #fff;
+}
