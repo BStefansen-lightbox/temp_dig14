@@ -43,7 +43,7 @@ def get_parcel_data_from_address_coordinates(lightbox_api_key: str, country_code
     Args:
         lightbox_api_key (str): The API key for accessing the LightBox API.
         country_code (str): The country code for the address.
-        address_coordinates (str): The address coordinates for the address.
+        address_wkt_coordinates (str): The address coordinates for the address.
     """
 
     # API endpoint configuration
