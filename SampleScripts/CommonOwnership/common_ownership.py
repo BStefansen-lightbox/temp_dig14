@@ -72,7 +72,7 @@ def test_response_status(lightbox_api_key: str) -> None:
 # Assign your LightBox API key
 lightbox_api_key = '<YOUR_API_KEY>'
 
-# Specify the LightBoxID
+# Specify the LightBoxID for the specified parcel 
 id = '0201MABNPDBU5D2EGP08YA'
 
 # Specify the Country Code
