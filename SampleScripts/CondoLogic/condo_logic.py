@@ -68,7 +68,7 @@ def get_assessment_data_from_lbx_parcel_id(lightbox_api_key: str, parcel_id: str
 
     Args:
         lightbox_api_key (str): The LightBox API key.
-        id (str): The parcel ID.
+        parcel_id (str): The parcel ID.
     """
 
     # API endpoint configuration
