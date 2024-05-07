@@ -213,3 +213,4 @@ print(json.dumps(assessment_data.json(), indent=4))
 test_geocode_address_response_status(lightbox_api_key)
 test_get_parcel_data_from_address_coordinates(lightbox_api_key)
 test_get_assessment_data_from_lbx_parcel_id(lightbox_api_key)
+
