@@ -36,9 +36,14 @@ def geocode_address(lightbox_api_key: str, address: str) -> Dict:
 
 
 # Test for the get_parcel_from_lbx_address_id() function
-def get_parcel_data_from_address_coordinates(lightbox_api_key: str, country_code: str, address_coordinates: str) -> Dict:
+def get_parcel_data_from_address_coordinates(lightbox_api_key: str, country_code: str, address_wkt_coordinates: str) -> Dict:
     """
     Returns a dictionary containing the parcel data for the specified address.
+
+    Args:
+        lightbox_api_key (str): The API key for accessing the LightBox API.
+        country_code (str): The country code for the address.
+        address_coordinates (str): The address coordinates for the address.
     """
 
     # API endpoint configuration
@@ -47,7 +52,7 @@ def get_parcel_data_from_address_coordinates(lightbox_api_key: str, country_code
     URL = BASE_URL + ENDPOINT
 
     # Setting up request parameters and headers
-    params = {"wkt": address_coordinates}
+    params = {"wkt": address_wkt_coordinates}
     headers = {"x-api-key": lightbox_api_key}
 
     # Make the request
@@ -57,14 +62,18 @@ def get_parcel_data_from_address_coordinates(lightbox_api_key: str, country_code
     return parcel_data
 
 
-def get_assessment_data_from_lbx_parcel_id(lightbox_api_key: str, lbx_parcel_id: str) -> Dict:
+def get_assessment_data_from_lbx_parcel_id(lightbox_api_key: str, parcel_id: str) -> Dict:
     """
     Returns a dictionary containing the assessment data for the specified parcel.
+
+    Args:
+        lightbox_api_key (str): The LightBox API key.
+        parcel_id (str): The parcel ID.
     """
 
     # API endpoint configuration
     BASE_URL = "https://api.lightboxre.com/v1"
-    ENDPOINT = f"/assessments/_on/parcel/us/{lbx_parcel_id}"
+    ENDPOINT = f"/assessments/_on/parcel/us/{parcel_id}"
     URL = BASE_URL + ENDPOINT
 
     # Setting up request parameters and headers
