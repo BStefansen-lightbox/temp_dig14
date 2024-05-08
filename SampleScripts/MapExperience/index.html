@@ -10,16 +10,37 @@
 
 <body>
     <div class="main">
-        <div>
-            <h2>Common Ownership</h2>
-            *Explain common ownership*
+        <div class="documentation">
+            <h1>Common Ownership</h1>
+            <div class="explanation">
+                <h3>
+                    Objective
+                </h3>
+                <p>Query for adjacent parcels to the parcel noted by the parcel LightBox 'ID.' Alternately pass in commonOwnership=true and get only the parcels adjacent to this parcel that have common ownership.</p>
+                
+                <br>
+
+                <h3>
+                    Endpoint
+                </h3>
+                <p>
+                    <span class="endpoint">/parcels/_adjacent/{countryCode}/{id}</span>
+                    <a href="https://developer.lightboxre.com/api/parcels#/">LightBox Parcel API</a>
+                </p>
+
+                <br>
+
+                <h3>Application</h3>
+            </div>
         </div>
 
         <div>
             User input for dropdown
         </div>
 
-        <div id="map" style="width: 800px; height: 500px;"></div>
+        <div class="map-section">
+            <div id="map" style="width: 800px; height: 500px;"></div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/wicket/wicket.min.js"></script>

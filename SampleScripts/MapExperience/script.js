@@ -92,6 +92,24 @@ function setupMapEvents(geojsonData) {
 }
 
 function addDataToMap(geojsonData) {
+    function assignRandomColors(geojsonData) {
+        const colorsUsed = {}; // Object to keep track of colors that have already been used
+    
+        geojsonData.features.forEach(feature => {
+            let color;
+            do {
+                color = `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
+            } while (colorsUsed[color]); // Ensure this color hasn't already been used
+    
+            colorsUsed[color] = true; // Mark this color as used
+            feature.properties.randomColor = color;
+        });
+    
+        return geojsonData;
+    }
+
+    geojsonData = assignRandomColors(geojsonData);
+
     // Ensure the 'parcels' source is added only once
     if (!map.getSource('parcels')) {
         map.addSource('parcels', {
@@ -102,6 +120,9 @@ function addDataToMap(geojsonData) {
         map.getSource('parcels').setData(geojsonData);
     }
 
+    geojsonData.features.forEach(feature => {
+        feature.properties.randomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+    });
     // Add the fill layer for the parcels
     if (!map.getLayer('parcels-fill')) {
         map.addLayer({
@@ -109,7 +130,7 @@ function addDataToMap(geojsonData) {
             type: 'fill',
             source: 'parcels',
             paint: {
-                'fill-color': '#FF0000',  // Red fill color
+                'fill-color': ['get', 'randomColor'],  // Red fill color
                 'fill-opacity': 0.4       // Slightly transparent
             }
         });
