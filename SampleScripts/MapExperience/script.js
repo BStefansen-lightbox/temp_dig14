@@ -1,8 +1,6 @@
-// Global Variables
-const lbxAPIKey = ''
-mapboxgl.accessToken = '';
-
 // Initialize the map
+const lbxAPIKey = 'ATFY7foMHsxT2wsgBD5Ovmwy6YvPWtDh'
+mapboxgl.accessToken = 'pk.eyJ1IjoiZHJhbWJhcnJhbi1sYngiLCJhIjoiY2x2d3NoODdnMmJqbDJzbWczOXk5bHVrMCJ9.r21DV-PhxRlvISwDyr0bFw';
 const map = new mapboxgl.Map({
     container: 'map', // container ID in the HTML
     style: 'mapbox://styles/mapbox/streets-v11', // style URL
@@ -168,5 +166,17 @@ function fitMapToBounds(geojsonData) {
     });
 }
 
-// Take in user input
-fetchData('0201MABNPDBU5D2EGP08YA');
+function main() {
+    document.addEventListener('DOMContentLoaded', function () {
+        const parcelTypeSelect = document.getElementById('parcel-type');
+    
+        // Add event listener for change event
+        parcelTypeSelect.addEventListener('change', function () {
+            selectedValue = parcelTypeSelect.value;
+            fetchData(selectedValue);
+        });
+    });
+}
+
+
+main();
