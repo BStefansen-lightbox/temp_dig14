@@ -1,6 +1,5 @@
 // Global Variables
 const lbxAPIKey = ''
-const URL = "https://api.lightboxre.com/v1/parcels/_adjacent/us/0201MABNPDBU5D2EGP08YA?commonOwnership='true'"
 mapboxgl.accessToken = '';
 
 // Initialize the map
@@ -11,7 +10,8 @@ const map = new mapboxgl.Map({
     zoom: 9 // starting zoom
 });
 
-function fetchData() {
+function fetchData(parcelId) {
+    const URL = `https://api.lightboxre.com/v1/parcels/_adjacent/us/${parcelId}?commonOwnership='true'`
     fetch(URL, {
         method: 'GET',
         headers: {
@@ -147,4 +147,5 @@ function fitMapToBounds(geojsonData) {
     });
 }
 
-fetchData();
+// Take in user input
+fetchData('0201MABNPDBU5D2EGP08YA');
