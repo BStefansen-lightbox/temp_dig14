@@ -53,6 +53,7 @@ a:hover {
 }
 
 .map-section {
+    margin-top: 1rem;
     border: 1px solid #ddd;
     background-color: #f9f9f9;
     border-radius: 4px;
@@ -60,6 +61,9 @@ a:hover {
     padding: 1rem;
 }
 
+#map {
+    margin-top: 0.5rem;
+}
 
 .mapboxgl-popup {
     font-family: Arial, sans-serif;
