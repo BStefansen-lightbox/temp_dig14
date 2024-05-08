@@ -7,3 +7,15 @@ body {
     justify-content: center;
     align-items: center;
 }
+.mapboxgl-popup {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    width: 250px;  /* Set the width of the popup */
+    color: #333;   /* Text color */
+}
+.mapboxgl-popup-content {
+    padding: 10px;
+}
+.mapboxgl-popup h3 {
+    margin-top: 0;
+}
