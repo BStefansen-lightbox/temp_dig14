@@ -8,9 +8,8 @@ const map = new mapboxgl.Map({
     zoom: 9 // starting zoom
 });
 
-function fetchData(parcelID) {
-    // Global Variables
-    const URL = `https://api.lightboxre.com/v1/parcels/_adjacent/us/${parcelID}?commonOwnership='true'`;
+function fetchData(parcelId) {
+    const URL = `https://api.lightboxre.com/v1/parcels/_adjacent/us/${parcelId}?commonOwnership='true'`
     fetch(URL, {
         method: 'GET',
         headers: {
