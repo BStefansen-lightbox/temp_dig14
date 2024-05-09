@@ -31,11 +31,20 @@
                 <br>
 
                 <h3>Application</h3>
+                <p>
+                    This application leverages the LightBox Parcels API, specifically utilizing the "Adjacent Parcels with Common Ownership" endpoint. By integrating this service, the application can query for parcels adjacent to a specified LightBox Parcel ID within a given country, provided the commonOwnership flag is set to true. This functionality is essential for identifying and visualizing parcels with shared ownership characteristics.
+                </p>
+                <p>
+                    Upon querying the API with the required parameters—including Parcel ID and Country Code—the response includes WKT (Well-Known Text) formatted strings representing the geographic boundaries of each parcel. These strings are then converted into GeoJSON format, which is used by the Mapbox API to render the parcels on an interactive map. Each parcel is color-coded to differentiate those with common ownership, enhancing the visualization and making it easier to discern patterns and relationships between the parcels.
+                </p>
+                <p>
+                    For demonstration purposes, the application includes a curated list of example Parcel IDs that showcase the capabilities of the API and illustrate potential real-world applications. This feature is designed to help users quickly understand how the adjacent parcels with common ownership might be used in practice, from urban planning and development to legal purposes and property management.
+                </p>
             </div>
         </div>
         <!-- Dropdown list -->
         <div class="map-section">
-            <label for="parcel-type">Select Example Parcel ID:</label>
+            <label for="parcel-type"><b>Select Example Parcel ID</b>:</label>
             <select id="parcel-type">
                 <option value=""></option>
                 <option value="0201MABNPDBU5D2EGP08YA">0201MABNPDBU5D2EGP08YA</option>
