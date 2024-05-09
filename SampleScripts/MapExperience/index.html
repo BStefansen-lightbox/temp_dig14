@@ -54,7 +54,15 @@
             <div id="map" style="width: 800px; height: 500px;"></div>
         </div>        
     </div>
+    <script>
+        // Function to reset the dropdown to its default option
+        function resetDropdown() {
+            document.getElementById('parcel-type').selectedIndex = 0; // Set to default option index
+        }
 
+        // Call the resetDropdown function when the page loads
+        window.onload = resetDropdown;
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/wicket/wicket.min.js"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
     <script src="script.js"></script>
