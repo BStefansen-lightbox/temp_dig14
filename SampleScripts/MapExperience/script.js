@@ -186,5 +186,12 @@ function main() {
     });
 }
 
+// Function to reset the dropdown to its default option
+function resetDropdown() {
+    document.getElementById('parcel-type').selectedIndex = 0; // Set to default option index
+}
+
+// Call the resetDropdown function when the page loads
+window.onload = resetDropdown;
 
 main();
