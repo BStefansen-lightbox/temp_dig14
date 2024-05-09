@@ -1,6 +1,6 @@
 // Initialize the map
-const lbxAPIKey = 'ATFY7foMHsxT2wsgBD5Ovmwy6YvPWtDh'
-mapboxgl.accessToken = 'pk.eyJ1IjoiZHJhbWJhcnJhbi1sYngiLCJhIjoiY2x2d3NoODdnMmJqbDJzbWczOXk5bHVrMCJ9.r21DV-PhxRlvISwDyr0bFw';
+const lbxAPIKey = ''
+mapboxgl.accessToken = '';
 const map = new mapboxgl.Map({
     container: 'map', // container ID in the HTML
     style: 'mapbox://styles/mapbox/streets-v11', // style URL
@@ -63,6 +63,11 @@ function setupMapEvents(geojsonData) {
         if (e.features.length > 0) {
             var feature = e.features[0];
     
+            // Close any existing popup before creating a new one
+            if (window.currentPopup) {
+                window.currentPopup.remove();
+            }
+    
             var popupContent = `
                 <h3>Parcel Information</h3>
                 <p><strong>ID:</strong> ${feature.properties.id}</p>
@@ -71,10 +76,13 @@ function setupMapEvents(geojsonData) {
                 <p><strong>Address:</strong> ${feature.properties.address}</p>
             `;
     
-            new mapboxgl.Popup()
+            var popup = new mapboxgl.Popup()
                 .setLngLat(e.lngLat)
                 .setHTML(popupContent)
                 .addTo(map);
+    
+            // Store reference to the popup to manage its lifecycle
+            window.currentPopup = popup;
         }
     });
 
