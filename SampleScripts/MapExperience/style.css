@@ -1,0 +1,79 @@
+body {
+    font-family: sans-serif;
+}
+
+h1,h2,h3,p {
+    margin: 0;
+}
+
+a {
+    color: #0c14ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #d54900;
+}
+
+.main {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.documentation {
+    width: 800px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    box-shadow: none;
+    padding: 1rem;
+    color: #3b4151;
+}
+
+.explanation {
+    margin-top: 1rem;
+}
+
+.explanation p {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column; 
+    gap: 0.25rem;
+}
+
+.endpoint {
+    background-color: #3b4151;
+    width: auto;
+    color:white;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+.map-section {
+    margin-top: 1rem;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    box-shadow: none;
+    padding: 1rem;
+}
+
+#map {
+    margin-top: 0.5rem;
+}
+
+.mapboxgl-popup {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    width: 250px;  /* Set the width of the popup */
+    color: #333;   /* Text color */
+}
+.mapboxgl-popup-content {
+    padding: 10px;
+}
+.mapboxgl-popup h3 {
+    margin-top: 0;
+}

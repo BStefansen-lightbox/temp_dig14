@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+    <title>Common Ownership</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="documentation">
+            <h1>Common Ownership</h1>
+            <div class="explanation">
+                <h3>
+                    Objective
+                </h3>
+                <p>Query for adjacent parcels to the parcel noted by the parcel LightBox 'ID.' Alternately pass in commonOwnership=true and get only the parcels adjacent to this parcel that have common ownership.</p>
+                
+                <br>
+
+                <h3>
+                    Endpoint
+                </h3>
+                <p>
+                    <span class="endpoint">/parcels/_adjacent/{countryCode}/{id}</span>
+                    <a href="https://developer.lightboxre.com/api/parcels#/">LightBox Parcel API</a>
+                </p>
+
+                <br>
+
+                <h3>Application</h3>
+                <p>
+                    This application leverages the LightBox Parcels API, specifically utilizing the "Adjacent Parcels with Common Ownership" endpoint. By integrating this service, the application can query for parcels adjacent to a specified LightBox Parcel ID within a given country, provided the commonOwnership flag is set to true. This functionality is essential for identifying and visualizing parcels with shared ownership characteristics.
+                </p>
+                <p>
+                    Upon querying the API with the required parameters—including Parcel ID and Country Code—the response includes WKT (Well-Known Text) formatted strings representing the geographic boundaries of each parcel. These strings are then converted into GeoJSON format, which is used by the Mapbox API to render the parcels on an interactive map. Each parcel is color-coded to differentiate those with common ownership, enhancing the visualization and making it easier to discern patterns and relationships between the parcels.
+                </p>
+                <p>
+                    For demonstration purposes, the application includes a curated list of example Parcel IDs that showcase the capabilities of the API and illustrate potential real-world applications. This feature is designed to help users quickly understand how the adjacent parcels with common ownership might be used in practice, from urban planning and development to legal purposes and property management.
+                </p>
+            </div>
+        </div>
+        <!-- Dropdown list -->
+        <div class="map-section">
+            <label for="parcel-type"><b>Select Example Parcel ID</b>:</label>
+            <select id="parcel-type">
+                <option value="">Please select a parcel</option>
+                <option value="0201MABNPDBU5D2EGP08YA">0201MABNPDBU5D2EGP08YA</option>
+                <option value="0202L1DVIKWS4GNPNF3JMR">0202L1DVIKWS4GNPNF3JMR</option>
+                <option value="02017VGZ7JBPKCDUEOUMJ9">02017VGZ7JBPKCDUEOUMJ9</option>
+            </select>
+            <div id="map" style="width: 800px; height: 500px;"></div>
+        </div>        
+    </div>
+    <script>
+        // Function to reset the dropdown to its default option
+        function resetDropdown() {
+            document.getElementById('parcel-type').selectedIndex = 0; // Set to default option index
+        }
+
+        // Call the resetDropdown function when the page loads
+        window.onload = resetDropdown;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/wicket/wicket.min.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <script src="script.js"></script>
+</body>
+</html>
