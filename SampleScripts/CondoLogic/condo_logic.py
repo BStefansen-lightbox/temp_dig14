@@ -180,7 +180,7 @@ def test_get_assessment_data_from_lbx_parcel_id(lightbox_api_key):
 lightbox_api_key = ""
 
 # Specify the address to geocode
-address = "25482 Buckwood Land Forest, Ca, 92630"
+address = "24299 Paseo De Valencia, Laguna Woods, CA 92637"
 country_code = "us" # 'us' for the United States
 
 # Geocode the specified address
